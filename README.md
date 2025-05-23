@@ -71,12 +71,8 @@
 ## 7. Tableau Dashboards
 - 📊 **Sales Dashboard:** Year-over-year sales, top categories, daily trends 
   ![Sales Dashboard](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Sales%20Dashboard.png)
-  
-- 🧑‍🤝‍🧑 **Customer Dashboard:**  Demographics, retention, feedback rating trends 
-  ![Customer Dashboard](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Customer%20and%20Feeback%20Dashboard.png)
-  
-- 🚚 **Delivery Dashboard:** Avg delivery time, city-wise delay rates     
-  ![Delivery Dashboard](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Marketing%20and%20Delivery%20Performance%20Dashboard.png)
+- 🧑‍🤝‍🧑 **Customer Dashboard:**  Demographics, retention, feedback rating trends
+- 🚚 **Delivery Dashboard:** Avg delivery time, city-wise delay rates
 
   🔗 View Dashboards Online : [Tableau Public](https://public.tableau.com/views/Blinkit_Sale_Dashboard/SalesDashboard?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)        
   📥 Download Full Tableau Packaged Workbook (.twbx) : [Blinkit_Sale_Dashboard.twbx](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Blinkit_Sale_Dashboard.twbx)        
