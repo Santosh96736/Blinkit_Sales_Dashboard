@@ -69,17 +69,20 @@
 - ⭐Customer Ratings & Sentiment Review
 
 ## 7. Tableau Dashboards
-| **Dashboard** | **Description** |
-|----------|-------------|
-| 📊 Sales Dashboard| Year-over-year sales, top categories, daily trends |
-| 🧑‍🤝‍🧑 Customer Dashboard | Demographics, retention, feedback rating trends |
-| 🚚 Delivery Dashboard | Avg delivery time, city-wise delay rates |        
-
-🔗 [Sales Dashboards](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Sales%20Dashboard.png)        
-🔗 [Customer Dashboard](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Customer%20and%20Feeback%20Dashboard.png)        
-🔗 [Delivery Dashboard](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Marketing%20and%20Delivery%20Performance%20Dashboard.png)        
-
+- 📊 **Sales Dashboard:** Year-over-year sales, top categories, daily trends 
+  ![Sales Dashboard](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Sales%20Dashboard.png)
   
+- 🧑‍🤝‍🧑 **Customer Dashboard:**  Demographics, retention, feedback rating trends 
+  ![Customer Dashboard](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Customer%20and%20Feeback%20Dashboard.png)
+  
+- 🚚 **Delivery Dashboard:** Avg delivery time, city-wise delay rates     
+  ![Delivery Dashboard](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Marketing%20and%20Delivery%20Performance%20Dashboard.png)
+
+  🔗 View Dashboards Online : [Tableau Public](https://public.tableau.com/views/Blinkit_Sale_Dashboard/SalesDashboard?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)        
+  📥 Download Full Tableau Packaged Workbook (.twbx) : [Blinkit_Sale_Dashboard.twbx](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Blinkit_Sale_Dashboard.twbx)        
+             
+      
+
 ## 8. Key Insights
 - 🥛**Top Product Categories:** Dairy, grocery, fruits, cold drinks and baby care led the sales chart.
 - 📈**YOY Growth:** 2% Vs. Previous Year
