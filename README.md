@@ -1,5 +1,5 @@
 
-# ![Logo]()Blinkit_Sales_Dashboard
+# Blinkit_Sales_Dashboard
 -  Analyzing online grocery performance for Blinkit using SQL, Excel & Tableau
 
 ## TABLE CONTENTS
