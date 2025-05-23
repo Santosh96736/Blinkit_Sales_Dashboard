@@ -1,6 +1,6 @@
 
 #  Blinkit Sales Dashboard        
--  Analyzing online grocery performance for Blinkit using SQL, Excel & Tableau
+-  📦 A data-driven grocery delivery analysis project using SQL, Excel & Tableau.
 
 ## TABLE CONTENTS
 1. [PROJECT OVERVIEW](#1-Project-overview)
@@ -15,8 +15,8 @@
 10. [CONTACT](#10-Contact)
 
 ## 1. Project Overview
--   This project analyzes Blinkit's sales, customer behavior, delivery performance, and product demand using a combination of SQL, Excel, and Tableau. The aim is to provide 
-    actionable insights for improving operations, increasing customer satisfaction, and boosting profitability.
+-   This project analyzes Blinkit's sales, customer behavior, delivery performance, and product demand using a combination of SQL, Excel, and Tableau. The goal is to 
+    generate actionable insights for improving operations, increasing customer satisfaction, and boosting profitability.
 
     Blinkit is one of India’s leading instant delivery platforms, and this project simulates real-world decision-making scenarios by analyzing critical metrics from various 
     business areas like marketing, inventory, and customer feedback.
@@ -30,8 +30,8 @@
 - **Tools Used for Cleaning & Uploading:** Excel, MySQL Workbench
 
 ## 3. Project Objectives
-- Evaluate sales and revenue trends over time.
-- Understand product demand and top-performing items.
+- Analyze sales trends and monitor revenue growth patterns.
+- Identify high-demand products and best-selling categories.
 - Analyze customer feedback and retention.
 - Track marketing campaign performance and ROI.
 
@@ -78,15 +78,14 @@
 🔗 [Sales Dashboards](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Sales%20Dashboard.png)        
 🔗 [Customer Dashboard](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Customer%20and%20Feeback%20Dashboard.png)        
 🔗 [Delivery Dashboard](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Marketing%20and%20Delivery%20Performance%20Dashboard.png)        
-  ![Sales Dashboard](https://github.com/Santosh96736/Blinkit_Sales_Dashboard/blob/main/Sales%20Dashboard.png)
 
   
 ## 8. Key Insights
 - 🥛**Top Product Categories:** Dairy, grocery, fruits, cold drinks and baby care led the sales chart.
 - 📈**YOY Growth:** 2% Vs. Previous Year
 - 🔁**Retention Rate:**  10% in the last 30 days
-- 💰**Revenue By Customer Segement:** $694K from regular customers, more than premium or new segments
-- ⭐**Avg Rating:** 3.34-most gave 3 and 4 stars
+- 💰**Revenue By Customer Segment:** $694K from regular customers, more than premium or new segments
+- ⭐**Average Rating:** 3.34-most gave 3 and 4 stars
 - 📢**Marketing ROI:** Email campaigns were most effective.
 - ⏱️**AVG Delivery Delay:** 4 Minutes
 
