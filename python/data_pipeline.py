@@ -7,16 +7,16 @@ user_password = os.getenv('DB_PASSWORD')
 
 engine = create_engine(f'mysql+mysqlconnector://{user_name}:{user_password}@localhost/blinkit_analytics')
 
-def read_file(file_name):
+def read_excel_file(file_name):
     return pd.read_excel(file_name)
 
-def validation(df):
+def validate_data(df):
     print(df.dtypes)
     print(df.isnull().sum())
     print(df.duplicated().sum())
     print(df.describe(include = 'all'))
 
-def load_data(df,table_name):
+def load_to_mysql(df,table_name):
     with engine.begin() as conn:
         conn.execute(text(f'SET FOREIGN_KEY_CHECKS = 0'))
         conn.execute(text(f"TRUNCATE TABLE {table_name}"))
@@ -25,111 +25,111 @@ def load_data(df,table_name):
 
         conn.execute(text(f'SET FOREIGN_KEY_CHECKS = 1'))
 
-df_customers = read_file('blinkit_raw_data/blinkit_customers.xlsx')
-print(df_customers.head())
+customers_df = read_excel_file('blinkit_raw_data/blinkit_customers.xlsx')
+print(customers_df.head())
 
-validation(df_customers)
+validate_data(customers_df)
 
-print(f"Rows Before Cleaning : {len(df_customers)}")
+print(f"Rows Before Cleaning : {len(customers_df)}")
 
-df_customers['phone'] = df_customers['phone'].astype('str')
-df_customers['pincode'] = df_customers['pincode'].astype('str')
-print(df_customers.dtypes)
+customers_df['phone'] = customers_df['phone'].astype('str')
+customers_df['pincode'] = customers_df['pincode'].astype('str')
+print(customers_df.dtypes)
 
-df_customers = df_customers.drop_duplicates(subset= 'email', keep = 'first')
+customers_df = customers_df.drop_duplicates(subset= 'email', keep = 'first')
 
-df_customers = df_customers[['customer_id','customer_name','email','phone','address','area','pincode',
+customers_df = customers_df[['customer_id','customer_name','email','phone','address','area','pincode',
                              'registration_date','customer_segment']]
 
-print(f"Rows After Cleaning : {len(df_customers)}")
+print(f"Rows After Cleaning : {len(customers_df)}")
 
-load_data(df_customers,'customers')
+load_to_mysql(customers_df,'customers')
 
-df_products = read_file('blinkit_raw_data/blinkit_products.xlsx')
+products_df = read_excel_file('blinkit_raw_data/blinkit_products.xlsx')
 
-validation(df_products)
+validate_data(products_df)
 
-load_data(df_products, 'products')
+load_to_mysql(products_df, 'products')
 
-df_inventory = read_file('blinkit_raw_data/blinkit_inventory.xlsx')
-print(df_inventory.head())
+inventory_df = read_excel_file('blinkit_raw_data/blinkit_inventory.xlsx')
+print(inventory_df.head())
 
-validation(df_inventory)
+validate_data(inventory_df)
 
-print(f"Rows Before Cleaning : {len(df_inventory)}")
+print(f"Rows Before Cleaning : {len(inventory_df)}")
 
-df_inventory = df_inventory[df_inventory['product_id'].isin(df_products['product_id'])]
+inventory_df = inventory_df[inventory_df['product_id'].isin(products_df['product_id'])]
 
-print(f"Rows After Cleaning : {len(df_inventory)}")
+print(f"Rows After Cleaning : {len(inventory_df)}")
 
-load_data(df_inventory,'inventory')
+load_to_mysql(inventory_df,'inventory')
 
-df_orders = read_file('blinkit_raw_data/blinkit_orders.xlsx')
-print(df_orders.head())
+orders_df = read_excel_file('blinkit_raw_data/blinkit_orders.xlsx')
+print(orders_df.head())
 
-validation(df_orders)
+validate_data(orders_df)
 
-print(f"Rows Before Cleaning : {len(df_orders)}")
+print(f"Rows Before Cleaning : {len(orders_df)}")
 
-df_orders = df_orders[df_orders['customer_id'].isin(df_customers['customer_id'])]
+orders_df = orders_df[orders_df['customer_id'].isin(customers_df['customer_id'])]
 
-df_orders = df_orders[['order_id','customer_id','order_date','order_total','payment_method','store_id']]
+orders_df = orders_df[['order_id','customer_id','order_date','order_total','payment_method','store_id']]
 
-print(f"Rows After Cleaning : {len(df_orders)}")
+print(f"Rows After Cleaning : {len(orders_df)}")
 
-load_data(df_orders,'orders')
+load_to_mysql(orders_df,'orders')
 
-df_order_items = read_file('blinkit_raw_data/blinkit_order_items.xlsx')
-print(df_order_items.head())
+order_items_df = read_excel_file('blinkit_raw_data/blinkit_order_items.xlsx')
+print(order_items_df.head())
 
-validation(df_order_items)
+validate_data(order_items_df)
 
-print(f"Rows Before Cleaning : {len(df_order_items)}")
+print(f"Rows Before Cleaning : {len(order_items_df)}")
 
-df_order_items = df_order_items[df_order_items['order_id'].isin(df_orders['order_id'])]
+order_items_df = order_items_df[order_items_df['order_id'].isin(orders_df['order_id'])]
 
-df_order_items = df_order_items[df_order_items['product_id'].isin(df_products['product_id'])]
+order_items_df = order_items_df[order_items_df['product_id'].isin(products_df['product_id'])]
 
-print(f"Rows After Cleaning : {len(df_order_items)}")
+print(f"Rows After Cleaning : {len(order_items_df)}")
 
-load_data(df_order_items,'order_items')
+load_to_mysql(order_items_df,'order_items')
 
-df_delivery_performance = read_file('blinkit_raw_data/blinkit_delivery_performance.xlsx')
-print(df_delivery_performance.head())
+delivery_performance_df = read_excel_file('blinkit_raw_data/blinkit_delivery_performance.xlsx')
+print(delivery_performance_df.head())
 
-validation(df_delivery_performance)
+validate_data(delivery_performance_df)
 
-print(f"Rows Before Cleaning : {len(df_delivery_performance)}")
+print(f"Rows Before Cleaning : {len(delivery_performance_df)}")
 
-df_delivery_performance = df_delivery_performance[df_delivery_performance['order_id'].isin(df_orders['order_id'])]
+delivery_performance_df = delivery_performance_df[delivery_performance_df['order_id'].isin(orders_df['order_id'])]
 
-print(f"Rows After Cleaning : {len(df_delivery_performance)}")
+print(f"Rows After Cleaning : {len(delivery_performance_df)}")
 
-load_data(df_delivery_performance,'delivery_performance')
+load_to_mysql(delivery_performance_df,'delivery_performance')
 
-df_customer_feedback = read_file('blinkit_raw_data/blinkit_customer_feedback.xlsx')
-print(df_customer_feedback.head())
+customer_feedback_df = read_excel_file('blinkit_raw_data/blinkit_customer_feedback.xlsx')
+print(customer_feedback_df.head())
 
-validation(df_customer_feedback)
+validate_data(customer_feedback_df)
 
-print(f"Rows Before Cleaning : {len(df_customer_feedback)}")
+print(f"Rows Before Cleaning : {len(customer_feedback_df)}")
 
-df_customer_feedback = df_customer_feedback[df_customer_feedback['order_id'].isin(df_orders['order_id'])]
+customer_feedback_df = customer_feedback_df[customer_feedback_df['order_id'].isin(orders_df['order_id'])]
 
-df_customer_feedback = df_customer_feedback[['feedback_id','order_id','rating','feedback_text',
+customer_feedback_df = customer_feedback_df[['feedback_id','order_id','rating','feedback_text',
                                              'feedback_category','sentiment','feedback_date']]
 
-print(f"Rows After Cleaning : {len(df_customer_feedback)}")
+print(f"Rows After Cleaning : {len(customer_feedback_df)}")
 
-load_data(df_customer_feedback,'customer_feedback')
+load_to_mysql(customer_feedback_df,'customer_feedback')
 
-df_marketing_performance = read_file('blinkit_raw_data/blinkit_marketing_performance.xlsx')
-print(df_marketing_performance.head())
+marketing_performance_df = read_excel_file('blinkit_raw_data/blinkit_marketing_performance.xlsx')
+print(marketing_performance_df.head())
 
-validation(df_marketing_performance)
+validate_data(marketing_performance_df)
 
-df_marketing_performance = df_marketing_performance[['campaign_id','campaign_name','date',
+marketing_performance_df = marketing_performance_df[['campaign_id','campaign_name','date',
                                                      'target_audience','channel','impressions',
                                                      'clicks','conversions','spend','revenue_generated']]
 
-load_data(df_marketing_performance,'marketing_performance')
+load_to_mysql(marketing_performance_df,'marketing_performance')
