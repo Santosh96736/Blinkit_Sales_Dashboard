@@ -33,7 +33,7 @@ CREATE VIEW fact_feedback AS
     FROM
         customer_feedback;
 
-CREATE VIEW fact_marketing AS
+CREATE VIEW fact_campaign_performance AS
     SELECT 
         campaign_id,
         date AS campaign_date,
